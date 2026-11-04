@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Laundry | DatLanDig</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-page">
+      <header id="app-header" class="app-header"></header>
+      <section class="page-title"><p class="eyebrow">PENGELOLAAN DATA</p><h1>Data Laundry</h1><p>Semua data siswa, berat laundry, dan status pengambilan.</p></section>
+      <section class="summary-grid compact-grid">
+        <article class="summary-card"><span>Total Laundry</span><strong id="warehouse-weight">0 kg</strong></article>
+        <article class="summary-card"><span>Belum Selesai</span><strong id="warehouse-pending">0</strong><small>pesanan</small></article>
+        <article class="summary-card"><span>Selesai</span><strong id="warehouse-completed">0</strong><small>pesanan</small></article>
+      </section>
+      <section class="panel table-panel">
+        <div class="panel-heading panel-heading-row"><div><p class="eyebrow">DAFTAR SISWA</p><h2>Data Laundry</h2></div><input id="warehouse-search" class="search-input" type="search" placeholder="Cari nama siswa..." aria-label="Cari nama siswa" /></div>
+        <div class="filter-row" role="group" aria-label="Filter status laundry">
+          <button class="filter-button active" type="button" data-filter="all">Semua</button>
+          <button class="filter-button" type="button" data-filter="pending">Dalam Proses</button>
+          <button class="filter-button" type="button" data-filter="completed">Selesai</button>
+        </div>
+        <div class="table-wrap"><table class="data-table"><thead><tr><th>No.</th><th>Nama Siswa</th><th>WhatsApp</th><th>Tanggal Masuk</th><th>Jenis</th><th>Berat (kg)</th><th>Biaya (Rp)</th><th>Status</th></tr></thead><tbody id="warehouse-body"></tbody></table></div>
+        <p id="warehouse-empty" class="empty-message" hidden>Data laundry belum tersedia.</p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

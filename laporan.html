@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan | DatLanDig</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-page">
+      <header id="app-header" class="app-header"></header>
+      <section class="page-title"><p class="eyebrow">LAPORAN</p><h1>Laporan Data Pelanggan</h1><p>Rekap seluruh pendataan laundry siswa.</p></section>
+      <section class="summary-grid report-grid">
+        <article class="summary-card"><span>Total Pendapatan</span><strong id="report-income">Rp0</strong></article>
+        <article class="summary-card"><span>Total Transaksi</span><strong id="report-orders">0</strong></article>
+        <article class="summary-card"><span>Jumlah Siswa</span><strong id="report-students">0</strong></article>
+        <article class="summary-card"><span>Total Berat</span><strong id="report-weight">0 kg</strong></article>
+      </section>
+      <section class="panel table-panel">
+        <div class="panel-heading panel-heading-row">
+          <div><p class="eyebrow">DATA PELANGGAN</p><h2>Rincian Laundry</h2></div>
+          <button class="button button-secondary" id="report-export" type="button">Ekspor CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table"><thead><tr><th>No.</th><th>Nama Siswa</th><th>WhatsApp</th><th>Tanggal Masuk</th><th>Jenis</th><th>Berat (kg)</th><th>Biaya (Rp)</th><th>Status</th></tr></thead><tbody id="report-body"></tbody></table>
+        </div>
+        <p id="report-empty" class="empty-message" hidden>Belum ada data laundry untuk dilaporkan.</p>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

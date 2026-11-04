@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DatLanDig | Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="login-view" class="login-view" hidden>
+      <section class="login-card">
+        <div class="logo-mark">LK</div>
+        <p class="eyebrow" id="auth-eyebrow">DATA LAUNDRY DIGITAL</p>
+        <h1 id="auth-title">Masuk ke DatLanDig</h1>
+        <p class="muted" id="auth-description">Kelola data laundry siswa dengan mudah.</p>
+        <form id="auth-form" class="form-stack">
+          <label>Nama Laundry<input name="name" required placeholder="Contoh: Laundry Sekolah" autocomplete="username" /></label>
+          <label>Password<input name="password" type="password" required placeholder="Minimal 6 karakter" autocomplete="current-password" /></label>
+          <label id="confirm-wrap" hidden>Konfirmasi Password<input name="confirm" type="password" placeholder="Ulangi password" autocomplete="new-password" /></label>
+          <button class="button button-primary" id="auth-submit" type="submit">Masuk</button>
+        </form>
+        <button class="text-button" id="auth-switch" type="button">Belum punya akun? Buat akun</button>
+      </section>
+    </main>
+
+    <main id="dashboard-view" class="app-page" hidden>
+      <header id="app-header" class="app-header"></header>
+      <section class="hero-card">
+        <div><p class="eyebrow">DASHBOARD</p><h1>Halo, <span id="dashboard-name"></span></h1><p>Ringkasan pendataan laundry siswa.</p></div>
+        <div class="hero-actions"><button id="export-button" class="button button-secondary hero-export" type="button">Ekspor CSV</button></div>
+      </section>
+      <section class="summary-grid">
+        <article class="summary-card"><span>Total Laundry</span><strong id="total-orders">0</strong><small>pesanan tercatat</small></article>
+        <article class="summary-card"><span>Dalam Proses</span><strong id="pending-orders">0</strong><small>belum diambil</small></article>
+        <article class="summary-card"><span>Selesai</span><strong id="completed-orders">0</strong><small>sudah diambil</small></article>
+      </section>
+      <section class="content-grid">
+        <form id="order-form" class="panel form-panel">
+          <div class="panel-heading"><p class="eyebrow">PENDATAAN BARU</p><h2>Tambah Laundry Siswa</h2></div>
+          <label>Nama Siswa<input name="customer" required placeholder="Contoh: Devina" /></label>
+          <label>Nomor WhatsApp<input name="phone" required inputmode="tel" placeholder="08xxxxxxxxxx" /></label>
+          <div class="field-row">
+            <label>Tanggal Masuk<input name="date" type="date" required /></label>
+            <label>Jumlah Laundry (kg)<input name="weight" type="number" min="0.1" max="160" step="0.1" required placeholder="Maksimal 160 kg" /><small class="field-hint">Batas berat per pendataan: 160 kg</small></label>
+          </div>
+          <div class="field-row">
+            <label>Jenis Laundry<select name="type"><option>Cuci Kering</option><option>Cuci Setrika</option><option>Setrika</option><option>Bed Cover</option></select></label>
+            <label>Biaya (Rp)<input name="price" type="number" min="0" required placeholder="20000" /></label>
+          </div>
+          <button class="button button-primary" type="submit">Simpan Pendataan</button>
+        </form>
+        <section class="panel activity-panel">
+          <div class="panel-heading"><p class="eyebrow">AKTIVITAS TERBARU</p><h2>Laundry Dalam Proses</h2></div>
+          <div id="active-orders" class="order-list"></div>
+        </section>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
