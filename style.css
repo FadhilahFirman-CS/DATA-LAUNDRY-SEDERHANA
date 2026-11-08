@@ -104,6 +104,10 @@ input:focus, select:focus { border-color: #83bdcb; box-shadow: 0 0 0 3px #62b3c7
 .logo-mark { width: 50px; height: 50px; margin-bottom: 24px; border-radius: 15px; box-shadow: 0 4px 0 #add9e2; font-size: 15px; }
 .login-card h1 { margin: 8px 0; color: #304959; font-size: 27px; letter-spacing: -.5px; }
 .login-card .muted { margin: 0 0 20px; font-size: 12px; }
+.app-notice { width: 100%; box-sizing: border-box; margin: 16px 0 0; padding: 12px 14px; border: 1px solid #b8dfe5; border-radius: 10px; color: #245c6a; background: #eefbfd; font-size: 12px; line-height: 1.5; text-align: center; }
+.app-notice.error { border-color: #f1b8b8; color: #9a3f45; background: #fff2f2; }
+.app-notice.success { border-color: #b9dfc5; color: #286540; background: #effaf1; }
+.export-hint { color: #e4f5f7; font-size: 11px; text-align: right; }
 .text-button { display: block; margin: 18px auto 0; padding: 5px; border: 0; color: var(--blue); background: transparent; font-size: 11px; font-weight: 700; cursor: pointer; }
 
 @media (max-width: 980px) {
@@ -141,4 +145,29 @@ input:focus, select:focus { border-color: #83bdcb; box-shadow: 0 0 0 3px #62b3c7
   .filter-button { flex: 1; padding: 8px 4px; }
   .search-input { width: 145px; }
   .login-card { padding: 27px 22px; }
+}
+
+/* Finishing system: consistent interaction and visual hierarchy */
+:focus-visible { outline: 3px solid #8bd1df; outline-offset: 3px; }
+button:disabled, .button:disabled { opacity: .65; cursor: wait; transform: none; }
+.hero-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; }
+.hero-actions .button { text-decoration: none; }
+.panel, .summary-card, .login-card { backdrop-filter: blur(12px); }
+.panel-heading h2, .page-title h1 { letter-spacing: -.35px; }
+.data-table thead { position: sticky; top: 0; z-index: 1; }
+.data-table tbody tr { transition: background .15s ease; }
+.data-table tbody tr:hover { background: #edf8fa; }
+.filter-button, .button, .logout-button, .site-nav a { transition: color .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+.button-secondary:hover, .logout-button:hover { transform: translateY(-1px); }
+.search-input { background: #fff; }
+.empty-message { margin: 8px 0 0; border: 1px dashed #cbdfe5; border-radius: 11px; background: #f8fcfd; }
+.export-hint { max-width: 190px; line-height: 1.45; }
+
+@media (max-width: 620px) {
+  .hero-card { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .hero-actions { width: 100%; align-items: stretch; }
+  .hero-actions .button { width: 100%; }
+  .export-hint { max-width: none; text-align: left; }
+  .panel-heading-row { flex-direction: column; }
+  .search-input { width: 100%; }
 }

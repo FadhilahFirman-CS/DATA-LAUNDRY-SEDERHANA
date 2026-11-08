@@ -3,22 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DatLanDig | Dashboard</title>
+    <title>LaundryKu | Masuk</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main id="login-view" class="login-view" hidden>
+    <main id="login-view" class="login-view">
       <section class="login-card">
         <div class="logo-mark">LK</div>
         <p class="eyebrow" id="auth-eyebrow">DATA LAUNDRY DIGITAL</p>
-        <h1 id="auth-title">Masuk ke DatLanDig</h1>
+        <h1 id="auth-title">Masuk ke LaundryKu</h1>
         <p class="muted" id="auth-description">Kelola data laundry siswa dengan mudah.</p>
-        <form id="auth-form" class="form-stack">
-          <label>Nama Laundry<input name="name" required placeholder="Contoh: Laundry Sekolah" autocomplete="username" /></label>
+        <form id="auth-form" class="form-stack" method="post" novalidate>
+          <label id="name-wrap">Username / Email<input name="name" required placeholder="admin@laundryku.id" autocomplete="username" /></label>
+          <label id="email-wrap" hidden>Email<input name="email" type="email" placeholder="admin@laundryku.id" autocomplete="email" /></label>
           <label>Password<input name="password" type="password" required placeholder="Minimal 6 karakter" autocomplete="current-password" /></label>
           <label id="confirm-wrap" hidden>Konfirmasi Password<input name="confirm" type="password" placeholder="Ulangi password" autocomplete="new-password" /></label>
           <button class="button button-primary" id="auth-submit" type="submit">Masuk</button>
         </form>
+        <div id="app-notice" class="app-notice" role="alert" aria-live="polite" hidden></div>
         <button class="text-button" id="auth-switch" type="button">Belum punya akun? Buat akun</button>
       </section>
     </main>
@@ -27,7 +29,7 @@
       <header id="app-header" class="app-header"></header>
       <section class="hero-card">
         <div><p class="eyebrow">DASHBOARD</p><h1>Halo, <span id="dashboard-name"></span></h1><p>Ringkasan pendataan laundry siswa.</p></div>
-        <div class="hero-actions"><button id="export-button" class="button button-secondary hero-export" type="button">Ekspor CSV</button></div>
+        <div class="hero-actions"><small class="export-hint">Ingin mengekspor data? Buka menu Laporan.</small><a class="button button-secondary hero-export" href="laporan.html">Lihat Laporan &amp; Ekspor</a></div>
       </section>
       <section class="summary-grid">
         <article class="summary-card"><span>Total Laundry</span><strong id="total-orders">0</strong><small>pesanan tercatat</small></article>
@@ -48,6 +50,7 @@
             <label>Biaya (Rp)<input name="price" type="number" min="0" required placeholder="20000" /></label>
           </div>
           <button class="button button-primary" type="submit">Simpan Pendataan</button>
+          <div id="dashboard-notice" class="app-notice" role="alert" aria-live="polite" hidden></div>
         </form>
         <section class="panel activity-panel">
           <div class="panel-heading"><p class="eyebrow">AKTIVITAS TERBARU</p><h2>Laundry Dalam Proses</h2></div>
@@ -55,6 +58,26 @@
         </section>
       </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
+    <script>
+      // Fallback agar pengguna tetap mendapat feedback bila koneksi CDN gagal.
+      if (!window.__laundrykuScriptLoaded) {
+        document.addEventListener("DOMContentLoaded", function () {
+          const form = document.getElementById("auth-form");
+          const notice = document.getElementById("app-notice");
+          if (!form || !notice) return;
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const username = form.elements.name.value.trim();
+            const password = form.elements.password.value;
+            notice.textContent = !username ? "Username/email wajib diisi." : !password ? "Password wajib diisi." : "Sistem login belum tersambung. Periksa koneksi internet lalu refresh halaman.";
+            notice.className = "app-notice error";
+            notice.hidden = false;
+          });
+        });
+      }
+    </script>
   </body>
 </html>
