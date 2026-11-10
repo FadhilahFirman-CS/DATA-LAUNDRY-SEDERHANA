@@ -58,26 +58,8 @@
         </section>
       </section>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
     <script src="script.js"></script>
     <script>
-      // Fallback agar pengguna tetap mendapat feedback bila koneksi CDN gagal.
-      if (!window.__laundrykuScriptLoaded) {
-        document.addEventListener("DOMContentLoaded", function () {
-          const form = document.getElementById("auth-form");
-          const notice = document.getElementById("app-notice");
-          if (!form || !notice) return;
-          form.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const username = form.elements.name.value.trim();
-            const password = form.elements.password.value;
-            notice.textContent = !username ? "Username/email wajib diisi." : !password ? "Password wajib diisi." : "Sistem login belum tersambung. Periksa koneksi internet lalu refresh halaman.";
-            notice.className = "app-notice error";
-            notice.hidden = false;
-          });
-        });
-      }
     </script>
   </body>
 </html>
